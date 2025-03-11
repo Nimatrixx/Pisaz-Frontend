@@ -6,13 +6,19 @@ class CustomButton extends StatelessWidget {
       required this.onPressed,
       this.width,
       this.height,
+      this.padding = const EdgeInsets.all(8.0),
+      this.rounded = false,
+      this.radius = 8.0,
       this.color,
-      this.text,
+      this.child = const Text('Click'),
       this.textColor});
 
   final double? width;
   final double? height;
-  final String? text;
+  final EdgeInsetsGeometry padding;
+  final bool rounded;
+  final double radius;
+  final Widget? child;
   final Color? color;
   final Color? textColor;
   final Function() onPressed;
@@ -20,22 +26,16 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: padding,
       child: Material(
         color: color,
-        borderRadius: BorderRadius.circular(0.0),
+        borderRadius: rounded ? BorderRadius.circular(radius) : null,
         elevation: 8.0,
         child: MaterialButton(
           minWidth: width,
           height: height,
           onPressed: onPressed,
-          child: Text(
-            text ?? 'Button',
-            style: TextStyle(
-              color: textColor,
-              fontSize: 20,
-            ),
-          ),
+          child: child,
         ),
       ),
     );

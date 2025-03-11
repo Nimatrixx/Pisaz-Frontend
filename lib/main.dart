@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pisaz/pages/login_page.dart';
 
 void main() {
   runApp(const Pisaz());
@@ -12,7 +13,7 @@ class Pisaz extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: LoginPage(),
         ),
       ),
     );
